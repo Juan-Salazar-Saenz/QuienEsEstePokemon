@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+</head>
+<body>
+    <h1>Pokédex</h1>
+    <ul>
+        {% for pokemon_folder in pokemon_folders %}
+            <li><a href="{% url 'pokemon_detail' pokemon_name=pokemon_folder %}">{{ pokemon_folder }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

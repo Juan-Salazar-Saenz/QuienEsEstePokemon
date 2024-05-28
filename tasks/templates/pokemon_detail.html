@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pokemon_name }}</title>
+</head>
+<body>
+    <h1>{{ pokemon_name }}</h1>
+    <ul>
+        {% for pokemon_image in pokemon_images %}
+            <li><img src="{{ MEDIA_URL }}pokemon_images/{{ pokemon_name }}/{{ pokemon_image }}" alt="{{ pokemon_image }}"></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'pokemon_list' %}">Back to Pokédex</a>
+</body>
+</html>

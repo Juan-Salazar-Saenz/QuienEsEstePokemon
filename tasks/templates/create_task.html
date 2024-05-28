@@ -2,16 +2,68 @@
 
 {% block content %}
 <main class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4 mt-5">            
-            <form action="/tasks/create/" method="POST" class="card card-body">
-                <h1>Create task</h1>
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div id="imagePreview"></div>
+        </div>
+        <div class="col-md-6">
+            <form action="/tasks/create/" enctype="multipart/form-data" method="POST" class="card card-body">
+                <center><h1>pokedex</h1></center>
                 {{error}}
-                {% csrf_token %}
-                {{form}}    
-                <button class="btn btn-primary">Create Task</button>
+                {% csrf_token %}                 
+                <label for="title">El pokemon es:</label>
+                <input type="text" id="title" name="title" value="{{title}}">   
+                <!-- Este es un comentario de una línea   --> 
+                <br>
+                <label for="description">Mensaje:</label>
+                <textarea id="description" name="description" rows="2" cols="50">{{ description }}</textarea> 
+                <br>
+                <table>
+                    <tr>
+                        <td><label for="imageInput">Selecciona la imagen:</label> </td>
+                        <td><input type="file" name="image" id="imageInput" onchange="previewImage()">  </td>
+                    </tr>
+                    <tr>
+                        <td>Guardar :</td>
+                        <td><input type="checkbox" id="important" name="important"></td>
+                    </tr>                    
+                </table>
+                <br>
+                <button class="btn btn-primary">¿ Quien es este pokemon ?</button>
             </form>
         </div>
     </div>
 </main>
+
+<script>
+    function previewImage() {
+        // Obtener el elemento de entrada de archivo y el div de vista previa
+        var input = document.getElementById('imageInput');
+        var preview = document.getElementById('imagePreview');
+
+        // Verificar si se seleccionó un archivo
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                // Crear un elemento de imagen y establecer su fuente en la URL del archivo seleccionado
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.maxWidth = '500px'; // Ancho máximo deseado
+                img.style.maxHeight = '350px'; // Altura máxima deseada
+                img.style.width = '100%'; // Asegurar que la imagen ocupe todo el espacio disponible
+                img.style.height = 'auto'; // Ajustar la altura automáticamente
+
+                // Eliminar cualquier imagen previa y agregar la nueva imagen al div de vista previa
+                preview.innerHTML = '';
+                preview.appendChild(img);
+            }
+
+            // Leer el archivo como una URL de datos
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
 {% endblock %}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django crud app</title>
+    <title>Django Pokemon app</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
 
@@ -12,7 +12,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="/signin">Crud</a>
+          <a class="navbar-brand" href="/signin">Pokemon app - ¿ quien es este pokemon ?</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,17 +21,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                
-                
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link active" href="/tasks">Tasks</a>
+                    <a class="nav-link active" href="/pokedex">Pokemones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tasks/create">Tasks create</a>
+                    <a class="nav-link" href="/tasks">Busquedas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tasks_complete">Tasks complete</a>
+                    <a class="nav-link" href="/tasks/create">Nueva Busqueda Pokemon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tasks_complete">Pokemones encontrados</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
