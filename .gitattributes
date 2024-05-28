@@ -1,3 +1,2 @@
-tasks/models/model_pokemon.keras filter=lfs diff=lfs merge=lfs -text
 models/model_pokemon.keras filter=lfs diff=lfs merge=lfs -text
 tasks/static/model_pokemon.keras filter=lfs diff=lfs merge=lfs -text
